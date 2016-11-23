@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6927215D1DE52A4D0066B757 /* UpdateToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927215C1DE52A4D0066B757 /* UpdateToDoViewController.swift */; };
+		692721601DE533C00066B757 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927215F1DE533C00066B757 /* UIViewController.swift */; };
 		692781BD1DE2C21600D27B5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692781BC1DE2C21600D27B5E /* AppDelegate.swift */; };
 		692781BF1DE2C21600D27B5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692781BE1DE2C21600D27B5E /* ViewController.swift */; };
 		692781C21DE2C21600D27B5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692781C01DE2C21600D27B5E /* Main.storyboard */; };
 		692781C51DE2C21600D27B5E /* MyNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 692781C31DE2C21600D27B5E /* MyNotes.xcdatamodeld */; };
 		692781C71DE2C21600D27B5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 692781C61DE2C21600D27B5E /* Assets.xcassets */; };
 		692781CA1DE2C21600D27B5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692781C81DE2C21600D27B5E /* LaunchScreen.storyboard */; };
+		692781D21DE2CF9A00D27B5E /* ToDoCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692781D11DE2CF9900D27B5E /* ToDoCellTableViewCell.swift */; };
+		692781D41DE2D15600D27B5E /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692781D31DE2D15600D27B5E /* AddToDoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6927215C1DE52A4D0066B757 /* UpdateToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateToDoViewController.swift; sourceTree = "<group>"; };
+		6927215F1DE533C00066B757 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		692781B91DE2C21600D27B5E /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692781BC1DE2C21600D27B5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		692781BE1DE2C21600D27B5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		692781C61DE2C21600D27B5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		692781C91DE2C21600D27B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		692781CB1DE2C21600D27B5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		692781D11DE2CF9900D27B5E /* ToDoCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCellTableViewCell.swift; sourceTree = "<group>"; };
+		692781D31DE2D15600D27B5E /* AddToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6927215E1DE533970066B757 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				6927215F1DE533C00066B757 /* UIViewController.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		692781B01DE2C21600D27B5E = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +72,13 @@
 		692781BB1DE2C21600D27B5E /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				6927215E1DE533970066B757 /* extension */,
 				692781BC1DE2C21600D27B5E /* AppDelegate.swift */,
 				692781BE1DE2C21600D27B5E /* ViewController.swift */,
+				692781D31DE2D15600D27B5E /* AddToDoViewController.swift */,
+				6927215C1DE52A4D0066B757 /* UpdateToDoViewController.swift */,
 				692781C01DE2C21600D27B5E /* Main.storyboard */,
+				692781D11DE2CF9900D27B5E /* ToDoCellTableViewCell.swift */,
 				692781C61DE2C21600D27B5E /* Assets.xcassets */,
 				692781C81DE2C21600D27B5E /* LaunchScreen.storyboard */,
 				692781CB1DE2C21600D27B5E /* Info.plist */,
@@ -139,9 +159,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				692721601DE533C00066B757 /* UIViewController.swift in Sources */,
 				692781BF1DE2C21600D27B5E /* ViewController.swift in Sources */,
 				692781BD1DE2C21600D27B5E /* AppDelegate.swift in Sources */,
+				692781D41DE2D15600D27B5E /* AddToDoViewController.swift in Sources */,
+				6927215D1DE52A4D0066B757 /* UpdateToDoViewController.swift in Sources */,
 				692781C51DE2C21600D27B5E /* MyNotes.xcdatamodeld in Sources */,
+				692781D21DE2CF9A00D27B5E /* ToDoCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +289,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkh.MyNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -277,6 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkh.MyNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -303,6 +329,7 @@
 				692781D01DE2C21600D27B5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
