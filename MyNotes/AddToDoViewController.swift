@@ -9,14 +9,19 @@
 import UIKit
 import CoreData
 
-class AddToDoViewController: UIViewController,UITextFieldDelegate {
+class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var managedObjectContext: NSManagedObjectContext!
     
+    @IBOutlet weak var imgViewTags: UIImageView!
     @IBOutlet weak var txtFieldNotes: UITextField!
+    let imagePickerTag=UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.imagePickerTag.delegate=self
+        
+        let tapGesture=UITapGestureRecognizer(target: self, action: #selector(handleImageTap(sender:)))
+        self.imgViewTags.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
 
@@ -24,17 +29,9 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK: - Actions Methods
     @IBAction func onCancelClick(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
 
@@ -53,6 +50,10 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate {
             modelObject.setValue(notes, forKey: "name")
             modelObject.setValue(NSDate(), forKey: "createdAt")
             
+            let imageData=UIImageJPEGRepresentation(self.imgViewTags.image!,0.5)
+            
+           // modelObject.setValue(imageData, forKey: "imageTag")
+            
             do {
                 try self.managedObjectContext.save()
                 dismiss(animated: true, completion: nil)
@@ -68,7 +69,42 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate {
         {
             self.showAlertWithTitle(title: "Warning!!", message: "Pleaser enter the notes", cancelButtonTitle: "Ok")
         }
-        
+    
+    }
+    
+    // MARK: - Image picker delegates
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.imgViewTags.contentMode = .scaleAspectFit
+            self.imgViewTags.image = pickedImage
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK:- Custom Methods
+    
+    func handleImageTap(sender:UITapGestureRecognizer)
+    {
+        let alert = UIAlertController(title:"Choose an option", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title:"Camera", style: .default, handler: {
+            action in
+            self.imagePickerTag.allowsEditing = true
+            self.imagePickerTag.sourceType = .camera
+            self.present(self.imagePickerTag, animated: true, completion: nil)
+            
+        }))
+        alert.addAction(UIAlertAction(title:"Gallery", style: .default, handler: {
+            action in
+            self.imagePickerTag.allowsEditing = true
+            self.imagePickerTag.sourceType = .photoLibrary
+            self.present(self.imagePickerTag, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title:"Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
 
     }
 }

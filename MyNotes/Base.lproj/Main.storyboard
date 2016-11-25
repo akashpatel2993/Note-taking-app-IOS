@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,27 +21,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-Aj-LlT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-Aj-LlT">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" id="esq-ui-SjW" customClass="ToDoCellTableViewCell" customModule="MyNotes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="esq-ui-SjW" id="U43-Lr-K7h">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyH-sV-0H5">
-                                                    <rect key="frame" x="8" y="14" width="292" height="21"/>
+                                                    <rect key="frame" x="8" y="14" width="291" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74g-hd-p3N">
-                                                    <rect key="frame" x="308" y="7" width="46" height="30"/>
+                                                    <rect key="frame" x="307" y="7" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 </button>
                                             </subviews>
@@ -57,8 +57,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="K0O-kq-G6F"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Notes added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75E-zd-0jU">
+                                <rect key="frame" x="124.5" y="324" width="125" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dsb-Aj-LlT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2nR-Fk-7xz"/>
+                            <constraint firstItem="75E-zd-0jU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OmG-uY-msF"/>
+                            <constraint firstItem="75E-zd-0jU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tqs-dN-yPR"/>
+                            <constraint firstItem="Dsb-Aj-LlT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cLy-f6-TLE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dsb-Aj-LlT" secondAttribute="bottom" id="e5z-Fu-E2E"/>
+                            <constraint firstAttribute="trailing" secondItem="Dsb-Aj-LlT" secondAttribute="trailing" id="f1f-yi-snA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="atQ-rt-ZCb">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="edit" id="2CL-ix-lEa">
@@ -68,11 +82,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OHu-6u-nVH">
                             <connections>
-                                <segue destination="9uW-GQ-iUk" kind="presentation" identifier="SegueAddToDoViewController" id="aEb-Wi-gOU"/>
+                                <segue destination="9uW-GQ-iUk" kind="presentation" identifier="SegueAddToDoViewController" modalTransitionStyle="flipHorizontal" id="aEb-Wi-gOU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblNoResult" destination="75E-zd-0jU" id="PsO-LQ-jWh"/>
                         <outlet property="tblList" destination="Dsb-Aj-LlT" id="zj7-NB-8nJ"/>
                     </connections>
                 </viewController>
@@ -92,15 +107,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="take notes ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mE5-qK-xnO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="take notes ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mE5-qK-xnO">
                                 <rect key="frame" x="16" y="86" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mE5-qK-xnO" firstAttribute="top" secondItem="Q7i-7h-Et7" secondAttribute="bottom" constant="22" id="PCn-2f-Dpe"/>
+                            <constraint firstItem="mE5-qK-xnO" firstAttribute="trailing" secondItem="f1c-hc-mwA" secondAttribute="trailingMargin" id="gx4-pW-MNg"/>
+                            <constraint firstItem="mE5-qK-xnO" firstAttribute="leading" secondItem="f1c-hc-mwA" secondAttribute="leadingMargin" id="qlc-Gj-LqE"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Update" id="Dfk-6I-neh">
@@ -123,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLa-Vd-gc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="199"/>
+            <point key="canvasLocation" x="569" y="384"/>
         </scene>
         <!--Add Notes-->
         <scene sceneID="kne-zf-Zgx">
@@ -144,6 +163,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="erB-iS-evy">
+                                <rect key="frame" x="99" y="150" width="177" height="138"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -160,6 +183,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imgViewTags" destination="erB-iS-evy" id="pCw-eh-5VP"/>
                         <outlet property="txtFieldNotes" destination="yuD-rq-FjX" id="49d-1r-kCd"/>
                     </connections>
                 </viewController>
@@ -204,4 +228,7 @@
             <point key="canvasLocation" x="1349.5999999999999" y="-528.48575712143929"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="64" height="64"/>
+    </resources>
 </document>

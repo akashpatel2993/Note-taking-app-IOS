@@ -12,6 +12,7 @@ import CoreData
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tblList: UITableView!
+    @IBOutlet weak var lblNoResult: UILabel!
     var managedObjectContext: NSManagedObjectContext!
     
     lazy var fetchedResultsController:NSFetchedResultsController<NSFetchRequestResult>={
@@ -33,6 +34,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
         do {
             try self.fetchedResultsController.performFetch()
+            self.checkNoResult()
         } catch {
             let error=error as NSError
             print(error.description)
@@ -46,6 +48,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
+
+    //MARK:- Table data source
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = fetchedResultsController.sections {
             return sections.count
@@ -80,7 +84,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         {
             let object=self.fetchedResultsController.object(at: indexPath) as! NSManagedObject
             self.managedObjectContext.delete(object)
-            self.managedObjectContext.insert(object)
         }
     }
     
@@ -135,6 +138,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             }
             break;
         }
+        self.checkNoResult()
     }
     
     //MARK:-
@@ -155,6 +159,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.didTapButtonHandler = {
             if let done = record.value(forKey: "done") as? Bool {
                 record.setValue(!done, forKey: "done")
+            }
+        }
+    }
+    
+    func checkNoResult()
+    {
+        if let sections=self.fetchedResultsController.sections
+        {
+            
+            if sections[0].numberOfObjects>0 {
+                self.tblList.isHidden=false
+                self.lblNoResult.isHidden=true
+            }
+            else
+            {
+                self.tblList.isHidden=true
+                self.lblNoResult.isHidden=false
             }
         }
     }
@@ -187,10 +208,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBAction func onEditClick(_ sender: UIBarButtonItem) {
         if self.tblList.isEditing {
             self.tblList.isEditing=false
+            self.navigationItem.leftBarButtonItem?.title="Edit"
+            self.navigationItem.leftBarButtonItem=UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(onEditClick(_:)))
         }
         else
         {
             self.tblList.isEditing=true
+            self.navigationItem.leftBarButtonItem=UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onEditClick(_:)))
 
         }
     }
