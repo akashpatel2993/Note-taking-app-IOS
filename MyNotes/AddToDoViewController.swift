@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
+    
     var managedObjectContext: NSManagedObjectContext!
     
     @IBOutlet weak var imgViewTags: UIImageView!
@@ -24,17 +24,17 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         self.imgViewTags.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     // MARK: - Actions Methods
     @IBAction func onCancelClick(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-
+        
     }
     
     @IBAction func onSaveClick(_ sender: UIBarButtonItem) {
@@ -50,14 +50,14 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
             modelObject.setValue(notes, forKey: "name")
             modelObject.setValue(NSDate(), forKey: "createdAt")
             
-            let imageData=UIImageJPEGRepresentation(self.imgViewTags.image!,0.5)
+            let imageData=UIImageJPEGRepresentation(self.imgViewTags.image!,0.5)! as Data
             
-           // modelObject.setValue(imageData, forKey: "imageTag")
+            modelObject.setValue(imageData, forKey: "image")
             
             do {
                 try self.managedObjectContext.save()
                 dismiss(animated: true, completion: nil)
-
+                
             } catch  {
                 let error=error as NSError
                 print(error.description)
@@ -69,7 +69,7 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         {
             self.showAlertWithTitle(title: "Warning!!", message: "Pleaser enter the notes", cancelButtonTitle: "Ok")
         }
-    
+        
     }
     
     // MARK: - Image picker delegates
@@ -105,6 +105,6 @@ class AddToDoViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         }))
         alert.addAction(UIAlertAction(title:"Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
+        
     }
 }

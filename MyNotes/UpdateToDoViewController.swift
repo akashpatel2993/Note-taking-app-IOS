@@ -12,12 +12,19 @@ import CoreData
 class UpdateToDoViewController: UIViewController {
     
     @IBOutlet weak var txtFieldNotes: UITextField!
+    
+    @IBOutlet weak var imgViewTag: UIImageView!
     var managedObjectContext:NSManagedObjectContext!
     var record:NSManagedObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtFieldNotes.text=self.record.value(forKey: "name") as? String
+        
+        if let imageData=self.record.value(forKey: "image") as? Data {
+            self.imgViewTag.image=UIImage(data:imageData)
+        }
+        
         // Do any additional setup after loading the view.
     }
     

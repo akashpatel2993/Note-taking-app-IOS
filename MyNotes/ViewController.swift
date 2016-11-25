@@ -91,7 +91,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         let oldRow=self.fetchedResultsController.object(at: sourceIndexPath) as! NSManagedObject
         self.managedObjectContext.insert(oldRow)
-        self.managedObjectContext.delete(oldRow)
+       // self.managedObjectContext.delete(oldRow)
+        var objects=self.fetchedResultsController.fetchedObjects
     }
     
     // MARK: -
@@ -170,10 +171,15 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             
             if sections[0].numberOfObjects>0 {
                 self.tblList.isHidden=false
+                self.tblList.delegate=self
+                self.tblList.dataSource=self
+                self.tblList.tableFooterView=UIView()
                 self.lblNoResult.isHidden=true
             }
             else
             {
+                self.tblList.delegate=nil
+                self.tblList.dataSource=nil
                 self.tblList.isHidden=true
                 self.lblNoResult.isHidden=false
             }
@@ -205,6 +211,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
     }
     
+    //MARK:-
+    //MARK:- Actions
     @IBAction func onEditClick(_ sender: UIBarButtonItem) {
         if self.tblList.isEditing {
             self.tblList.isEditing=false
