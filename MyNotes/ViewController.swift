@@ -48,7 +48,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     //MARK:- Table data source
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = fetchedResultsController.sections {
@@ -91,8 +91,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         let oldRow=self.fetchedResultsController.object(at: sourceIndexPath) as! NSManagedObject
         self.managedObjectContext.insert(oldRow)
-       // self.managedObjectContext.delete(oldRow)
-        var objects=self.fetchedResultsController.fetchedObjects
+        let objects=self.fetchedResultsController.fetchedObjects
     }
     
     // MARK: -
@@ -146,20 +145,21 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     //MARK:- Custom methods
     func configureCell(cell: ToDoCellTableViewCell, atIndexPath indexPath:IndexPath) {
         // Fetch Record
-        let record = fetchedResultsController.object(at: indexPath) as! NSManagedObject
+        let record = fetchedResultsController.object(at: indexPath) as! Item
         
         // Update Cell
-        if let name = record.value(forKey: "name") as? String {
+        
+        if let name = record.name {
             cell.lblName.text = name
         }
         
-        if let done = record.value(forKey: "done") as? Bool {
-            cell.btnDone.isSelected = done
+        if record.done {
+            cell.btnDone.isSelected = record.done
         }
         
         cell.didTapButtonHandler = {
-            if let done = record.value(forKey: "done") as? Bool {
-                record.setValue(!done, forKey: "done")
+            if record.done {
+                record.done = !record.done
             }
         }
     }
@@ -190,25 +190,30 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     //MARK:- Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier=="SegueAddToDoViewController" {
+        if segue.identifier=="SegueAdd" {
             let vcNav=segue.destination as! UINavigationController
             
             if let vcAdd=vcNav.topViewController as? AddToDoViewController
             {
                 vcAdd.managedObjectContext=self.managedObjectContext
+                vcAdd.actionType=ActionType.ADD
             }
         }
-            
-        else if segue.identifier=="SegueUpdateToDoViewController"
+        else if segue.identifier=="SegueUpdate"
         {
-            let vcUpdate=segue.destination as? UpdateToDoViewController
-            vcUpdate?.managedObjectContext=self.managedObjectContext
-            if let index=self.tblList.indexPathForSelectedRow
+            let vcNav=segue.destination as! UINavigationController
+            
+            if let vcAdd=vcNav.topViewController as? AddToDoViewController
             {
-                vcUpdate?.record=self.fetchedResultsController.object(at: index) as? NSManagedObject
+                vcAdd.managedObjectContext=self.managedObjectContext
+                vcAdd.actionType=ActionType.UPDATE
+                if let index=self.tblList.indexPathForSelectedRow
+                {
+                    vcAdd.record=self.fetchedResultsController.object(at: index) as? Item
+                }
             }
+            
         }
-        
     }
     
     //MARK:-
@@ -223,7 +228,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         {
             self.tblList.isEditing=true
             self.navigationItem.leftBarButtonItem=UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onEditClick(_:)))
-
+            
         }
     }
     
