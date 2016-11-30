@@ -18,7 +18,7 @@ extension Item {
 
     @NSManaged public var createdAt: Date?
     @NSManaged public var done: Bool
-    @NSManaged public var image: [Data]?
+    @NSManaged public var image: [Dictionary<String,Any>]?
     @NSManaged public var name: String?
 
 }

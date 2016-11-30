@@ -20,6 +20,7 @@
 		692781D41DE2D15600D27B5E /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692781D31DE2D15600D27B5E /* AddToDoViewController.swift */; };
 		6931DAE41DEA672100B5AB6C /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6931DAE31DEA672100B5AB6C /* CustomCollectionViewCell.swift */; };
 		6931DAE71DEA7D9B00B5AB6C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6931DAE61DEA7D9B00B5AB6C /* AppConstants.swift */; };
+		693AB44D1DEE76510016972F /* ImageMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693AB44C1DEE76500016972F /* ImageMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		692781D31DE2D15600D27B5E /* AddToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		6931DAE31DEA672100B5AB6C /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		6931DAE61DEA7D9B00B5AB6C /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		693AB44C1DEE76500016972F /* ImageMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageMapViewController.swift; path = extension/ImageMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				692727FF1DE93F4B001AC4A6 /* models */,
 				6927215E1DE533970066B757 /* extension */,
 				692781BC1DE2C21600D27B5E /* AppDelegate.swift */,
+				693AB44C1DEE76500016972F /* ImageMapViewController.swift */,
 				692781BE1DE2C21600D27B5E /* ViewController.swift */,
 				692781D31DE2D15600D27B5E /* AddToDoViewController.swift */,
 				6931DAE31DEA672100B5AB6C /* CustomCollectionViewCell.swift */,
@@ -194,6 +197,7 @@
 				692728031DE93F5B001AC4A6 /* Item+CoreDataProperties.swift in Sources */,
 				692728021DE93F5B001AC4A6 /* Item+CoreDataClass.swift in Sources */,
 				692781D21DE2CF9A00D27B5E /* ToDoCellTableViewCell.swift in Sources */,
+				693AB44D1DEE76510016972F /* ImageMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

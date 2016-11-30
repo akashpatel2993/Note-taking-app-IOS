@@ -12,6 +12,9 @@ let kTxtADD="Add Notes"
 let kTxtUpdate="Update Notes"
 let kTxtNotSaved="Your to-do could not be saved."
 let kTxtWarning="Warning"
+let kKeyImg="image"
+let kKeyLocation="location"
+let ksegueMaps="SegueMaps"
 
 enum ActionType
 {

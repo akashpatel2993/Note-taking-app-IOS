@@ -11,4 +11,5 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgViewNote: UIImageView!
+    @IBOutlet weak var lblLocation: UILabel!
 }
