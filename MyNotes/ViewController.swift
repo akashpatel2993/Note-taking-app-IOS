@@ -147,6 +147,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         // Fetch Record
         let record = fetchedResultsController.object(at: indexPath) as! Item
         
+        let attributes = [
+            NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleThick.rawValue),
+            NSStrikethroughColorAttributeName:UIColor.gray
+            ] as [String : Any]
+        
         // Update Cell
         
         if let name = record.name {
@@ -155,13 +160,25 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         if record.done {
             cell.btnDone.isSelected = record.done
+            var title = NSAttributedString(string:record.name!, attributes: attributes)
+            cell.lblName.attributedText=title
         }
+        else{
+            cell.btnDone.isSelected=false
+        }
+        
         
         cell.didTapButtonHandler = {
             if record.done {
                 record.done = !record.done
             }
+            else
+            {
+                record.done=true
+            }
         }
+        
+       
     }
     
     func checkNoResult()
